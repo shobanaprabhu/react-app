@@ -10,10 +10,15 @@ class Menu extends Component {
         this.state = {
           selectedDish: null
       }
+      console.log('In constructor method')
+    }
+    componentDidMount()
+    {
+      console.log('In componentdidmount method')
     }
     onDishSelect(dish) {
       this.setState({ selectedDish: dish});
-  }
+    }
     renderDish(dish) {
       if (dish != null)
         return (
@@ -44,7 +49,7 @@ class Menu extends Component {
               </div>
             );
         });
-
+        console.log('In render method')
         return (
           <div className="container">
             <div className="row">
