@@ -16,7 +16,6 @@ class Main extends Component {
   }
   render()
   {
-    console.log(this.state.dish,typeof this.state.dish!=="undefined")
     return (
       <div>
         <Navbar dark color="primary">

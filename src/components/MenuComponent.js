@@ -6,11 +6,11 @@ class Menu extends Component {
 
     constructor(props) {
       super(props);
-      console.log('In constructor method')
+      console.log('In menucomponent constructor method')
     }
     componentDidMount()
     {
-      console.log('In componentdidmount method')
+      console.log('In menucomponent componentdidmount method')
     }
     
     render() {
@@ -27,7 +27,7 @@ class Menu extends Component {
               </div>
             );
         });
-        console.log('In render method')
+        console.log('In menucomponent render method')
         return (
           <div className="container">
             <div className="row">

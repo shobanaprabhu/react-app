@@ -5,6 +5,14 @@ import { Card, CardImg,CardText, CardBody, CardTitle } from 'reactstrap';
 
 class Dishdetail extends Component {
 
+    componentDidMount()
+    {
+      console.log('In dishdetail componentdidmount method')
+    }
+    componentDidUpdate()
+    {
+      console.log('In dishdetail componentdidupdate method')
+    }
     renderDish(dish)
     {
         if(dish!=null)
@@ -55,6 +63,7 @@ class Dishdetail extends Component {
     }
     render()
     {
+        console.log('In dishdetail render method')
         if(this.props.dish != null && typeof this.props.dish!=="undefined")
         {
             return (
