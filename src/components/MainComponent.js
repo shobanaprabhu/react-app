@@ -11,6 +11,18 @@ import Dishdetail from './DishdetailComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { Routes,Route, Navigate,useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+
+const mapStateToProps = state => {
+  return {
+    dishes: state.dishes,
+    comments: state.comments,
+    promotions: state.promotions,
+    leaders: state.leaders
+  }
+}
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -56,5 +68,5 @@ class Main extends Component {
     );
   }
 }
+export default connect(mapStateToProps)(Main);
 
-export default Main;
