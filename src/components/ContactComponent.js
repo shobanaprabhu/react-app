@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbItem,Form,FormGroup,Button,Label,Input,Col, Row, FormFeedback, } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem,Button,Label,Col, Row } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -82,7 +82,7 @@ class Contact extends Component{
     }
 
     render() {
-        const errors = this.validate(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email);
+        //const errors = this.validate(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email);
         return(
             <div className="container">
                 <div className="row">
