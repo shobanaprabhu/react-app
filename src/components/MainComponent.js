@@ -12,7 +12,7 @@ import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { Routes,Route, Navigate,useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment,fetchDishes, fetchComments, fetchPromos,fetchLeaders } from '../redux/ActionCreators';
+import { postComment,postFeedback,fetchDishes, fetchComments, fetchPromos,fetchLeaders } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 const mapStateToProps = state => {
@@ -30,7 +30,8 @@ const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
   fetchComments: () => dispatch(fetchComments()),
   fetchPromos: () => dispatch(fetchPromos()),
-  fetchLeaders: () => dispatch(fetchLeaders())
+  fetchLeaders: () => dispatch(fetchLeaders()),
+  postFeedback: (firstname, lastname, telnum, email, agree, contactType, message) => dispatch(postFeedback(firstname, lastname, telnum, email, agree, contactType, message))
 });
 class Main extends Component {
   constructor(props) {
@@ -85,7 +86,7 @@ class Main extends Component {
               <Routes>
                 <Route path='/home' element={<HomePage/>} />
                 <Route path='/menu' element={<Menu dishes={this.props.dishes.dishes} />} />
-                <Route path='/contactus' element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+                <Route path='/contactus' element={<Contact resetFeedbackForm={this.props.resetFeedbackForm}  postFeedback={this.props.postFeedback} />} />
                 <Route path='/aboutus' element={<About leaders={this.props.leaders.leaders} leaderLoading={this.props.leaders.isLoading} leaderErrMess={this.props.leaders.errMess} />}/>
                 <Route path='/menu/:dishId' element={<DishWithId/>} />
                 <Route path="*" element={<Navigate to="/home" />} />
