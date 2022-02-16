@@ -178,7 +178,7 @@ function RenderComments({comments, postComment, dishId})
     if (comments != null && comments !== undefined)
     {
         const commentList = comments.map(item => (
-            <li>
+            <li key={item.id}>
             {item.comment}
             <br/><br/>
             -- {item.author},  {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(item.date)))}
