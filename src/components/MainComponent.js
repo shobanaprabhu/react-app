@@ -12,7 +12,7 @@ import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { Routes,Route, Navigate,useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
+import { postComment,fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 
 const mapStateToProps = state => {
@@ -25,7 +25,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => ({
   
-  addComment: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+  postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
   fetchDishes: () => { dispatch(fetchDishes())},
   resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
   fetchComments: () => dispatch(fetchComments()),
@@ -69,7 +69,7 @@ class Main extends Component {
             errMess={this.props.dishes.errMess}
             comments={this.props.comments.comments.filter((comment) => comment.dishId === parseInt(params.dishId,10))}
             commentsErrMess={this.props.comments.errMess}
-            addComment={this.props.addComment}
+            postComment={this.props.postComment}
         />
       );
     };
@@ -78,7 +78,7 @@ class Main extends Component {
         <Header/>
         <Routes>
           <Route path='/home' element={<HomePage/>} />
-          <Route path='/menu' element={<Menu dishes={this.state.dishes} />} />
+          <Route path='/menu' element={<Menu dishes={this.props.dishes.dishes} />} />
           <Route path='/contactus' element={<Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
           <Route path='/aboutus' element={<About leaders={this.state.leaders} />}/>
           <Route path='/menu/:dishId' element={<DishWithId/>} />
